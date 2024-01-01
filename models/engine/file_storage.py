@@ -47,7 +47,7 @@ class FileStorage:
                 key: value.to_dict() for key, value
                 in FileStorage.__objects.items()}
         json_string = dumps(dict)
-        filename = FileStorage.__filepath
+        filename = FileStorage.__file_path
         with open(filename, "w") as f:
             f.write(json_string)
 
