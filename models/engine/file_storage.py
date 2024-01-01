@@ -55,7 +55,7 @@ class FileStorage:
         """ Deserializes the JSON file to __objects
         """
         allowed_classes = ["BaseModel"]
-        filename = FileStorage.__filepath
+        filename = FileStorage.__file_path
         if isfile(filename):
             with open(filename, "r") as f:
                 json_string = f.read(filename)
