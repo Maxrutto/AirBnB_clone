@@ -21,11 +21,8 @@ class FileStorage:
 
     """
 
-    def __init__(self):
-        """ Initializing the attributes
-        """
-        __file_path = "file.json"
-        __objects = {}
+    __file_path = "file.json"
+    __objects = {}
 
     def all(self):
         """ Returns the dictionary __objects
