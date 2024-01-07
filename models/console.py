@@ -3,7 +3,7 @@
 import cmd
 from models import storage
 
-class HBnBCommand(cmd.cmd):
+class HBnBCommand(cmd.Cmd):
     """Defines the HBnB command interpreter.
     Attributes:
         prompt (str): The prompt given to the user/developer
@@ -22,7 +22,7 @@ class HBnBCommand(cmd.cmd):
         return True
 
     def do_EOF(self):
-        """EOF Signal to exit the program"""
+        """EOF Signal to exit the program with a command"""
         print("")
         return True
 
