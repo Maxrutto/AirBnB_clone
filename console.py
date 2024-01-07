@@ -1,23 +1,24 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 """Defines the HBnB console"""
 import cmd
-from models import storage
 
-class HBnBCommand(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """Defines the HBnB command interpreter.
     Attributes:
         prompt (str): The prompt given to the user/developer
     """
 
+    prompt = "(hbnb) "
+
     def emptyline(self):
         """Do nothing when receiving an empty line."""
         pass
 
-    def do_quit(self):
+    def do_quit(self, arg):
         """Quit to exit the program."""
         return True
 
-    def do_EOF(self):
+    def do_EOF(self, arg):
         """EOF Signal to exit the program with a command"""
         print("")
         return True
