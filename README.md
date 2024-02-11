@@ -1,9 +1,9 @@
-AirBnB Clone - The Console/Command Interpreter
-Description
+# AirBnB Clone - The Console/Command Interpreter
+## Description
 
 This is a project done by Maxmillan Rutto. It's the first step towards building a full web application: an AirBnB clone. This first step consists of a custom command-line interface for data management and the base classes for the storage of this data.
 
-Functionalities of this command interpreter
+# Functionalities of this command interpreter
 
 Create a new object (ex: a new User or a new Place)
 Retrieve an object from a file or a database (Seralization and Deserialization)
@@ -11,11 +11,11 @@ Do operations on objects (count, compute stats, etc...)
 Update attributes of an object (update())
 Destroy an object(destroy())
 
-Console and Command Usage
+## Console and Command Usage
 
 The console is a Unix shell-like command line user interface provided by the python CmdModule. It prints a prompt and waits for the user for input, for our project we used (hbnb)
 
-Command					Example
+# Command			Example
 Display help command		(hbnb) help <command>
 Create object(prints its id)	(hbnb) create <class>
 Destroy object			(hbnb) destroy <class> <id> or (hbnb) <class>.destroy(<id>)
@@ -32,8 +32,8 @@ Documented commands (type help ):
 EOF all count create destroy help quit show update
 
 
-Class Models Used
-File				Description			Attributes
+# Class Models Used
+**File**				**Description**		**Attributes**
 base_model.py		The BaseModel class 
 			is inherited by other classes	id, created_at, updated_at
 
@@ -64,17 +64,17 @@ amenity.py		Amenity class stores
 
 
 
-Environment
+### Environment
 This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.11.5)
 
-Installation
+### Installation
 Clone this repository: git clone https://github.com/Maxrutto/AirBnB_clone.git
 Access AirBnb directory: cd AirBnB_command_interpreter
 Run hbnb(interactively): ./console.py and enter command
 Run hbnb(non-interactively): echo "<command>" | ./console.py
 
-Tests
+### Tests
 All the code is tested with the unittest module. The tests for all the classes and functions are in the tests folder.
 
-Authors
-Maxmillan Rutto
+# Authors
+**Maxmillan Rutto <ruttomaxmillan@gmail.com>**
