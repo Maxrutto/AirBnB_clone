@@ -4,7 +4,7 @@ all other classes that inherit from it
 
 """
 
-import datetime
+from datetime import datetime
 import uuid
 
 class BaseModel:
