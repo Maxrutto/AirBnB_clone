@@ -15,13 +15,21 @@ class BaseModel:
             created_at: The current datetime for each instance
             updated_at: The current datetime each time an instance of a each object is created
     """
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         To initialize data
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+         #setting attributes from kwargs
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    if key == "created_at" or key == "updated_at":
+                        value = datetime.fromisoformat(value)
+                    setattr(self, key, value)
+         else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
 
     def save(self):
         """
