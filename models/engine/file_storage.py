@@ -49,7 +49,8 @@ class FileStorage:
         if os.path.exists(self.__file_path):
             try:
                 with open(self.__file_path, 'r', encoding = "utf-8") as j:
-                    self.__objects = json.load(j)
+                    obj_dict = json.load(j)
+                    self.__object = {}
                     for key, value in obj_dict.items():
                         class_name = value["__class__"]
                         if class_name == "BaseModel":
