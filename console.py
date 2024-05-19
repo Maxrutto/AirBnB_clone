@@ -18,6 +18,22 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
+    classes = ['BaseModel']
+
+    commands = ['create', 'show', 'update', 'all', 'destroy', 'count']
+
+    def precmd(self, arg):
+        """
+        Parses command input
+        """
+        if '.' in arg and '(' in arg and ')' in arg:
+            cls = arg.split('.')
+            cmd = cls[1].split('(')
+            args = cmd[1].split(')')
+            if cls[0] in HBNBCommand.classes and cmd[0] in HBNBCommand.commands:
+                arg = cmd[0] + ' ' + cls[0] + ' ' + args[0]
+        return arg
+
     def do_quit(self, arg):
         """
         Quits to exit the command interpreter
@@ -42,6 +58,39 @@ class HBNBCommand(cmd.Cmd):
         Prints help description
         """
         print("Provides a description of a given command")
+
+    def do_create(self, arg):
+        """
+        Usage: create <class>
+        This command creates an instance of a given class
+        """
+        if not arg:
+            print("** class name missing **")
+        elif arg not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+        else:
+            dct = {'BaseModel': BaseModel}
+            model = dct[arg]()
+            print(model.id)
+            model.save()
+
+    def do_show(self, arg):
+        """
+        Usage: show <class> <id>
+        Prints the string representation of an
+        instance based on the class name and id
+        """
+        if not arg:
+            print("** class name missing **")
+            return
+
+        args = arg.split(' ')
+
+        if arg[0] not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        else:
 
 
 if __name__ == '__main__':
