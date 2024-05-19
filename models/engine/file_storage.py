@@ -4,15 +4,17 @@ This module contains a class that serializes instance to a JSON file and deseria
 """
 
 import json
+import os
 from models.base_model import BaseModel
+from models.user import User
 
 class FileStorage:
     """
     This class serializes intance to JSON and deserializes JSON to instance
     """
-    def __init__(self, file_path='file.json'0):
+    def __init__(self, file_path="file.json"):
         """
-        Initializing data
+        Initializing the FileStorage instance
         """
         self.__file_path = file_path
         self.__objects = {}
@@ -44,12 +46,15 @@ class FileStorage:
         otherwise, do nothing).
         If the file doesn't exist, no exception should be raised
         """
-        try:
-            with open(self.__file_path, 'r', encoding = "utf-8") as j:
-                self.__objects = json.load(j)
-                for key, value in obj_dict.items():
-                    class_name = value["__class__"]
-                    if class_name == "BaseModel":
-                        self.__objects[key] = BaseModel(**value)
-        except FileNotFoundError:
-            pass
+        if os.path.exists(self.__file_path):
+            try:
+                with open(self.__file_path, 'r', encoding = "utf-8") as j:
+                    self.__objects = json.load(j)
+                    for key, value in obj_dict.items():
+                        class_name = value["__class__"]
+                        if class_name == "BaseModel":
+                            self.__objects[key] = BaseModel(**value)
+                        elif class_name == "User":
+                            self.__objects[key] = User(**value)
+            except FileNotFoundError:
+                pass
