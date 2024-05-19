@@ -28,11 +28,11 @@ class BaseModel:
                     if key == "created_at" or key == "updated_at":
                         value = datetime.fromisoformat(value)
                     setattr(self, key, value)
-         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = self.created_at
-            storage.new(self)
+            else:
+                self.id = str(uuid.uuid4())
+                self.created_at = datetime.now()
+                self.updated_at = self.created_at
+                storage.new(self)
 
     def save(self):
         """
