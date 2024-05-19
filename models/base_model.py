@@ -1,11 +1,13 @@
+#!/usr/bin/python3
 """
-This file contains a basemodel structure that defines attributes and methods for
-all other classes that inherit from it
+This file contains a basemodel structure that defines
+attributes and methods for all other classes that inherit from it
 
 """
 
 from datetime import datetime
 import uuid
+
 
 class BaseModel:
     """
@@ -13,27 +15,28 @@ class BaseModel:
         Attributes:
             id: The unique id for each object
             created_at: The current datetime for each instance
-            updated_at: The current datetime each time an instance of a each object is created
+            updated_at: The current datetime each time
+            an instance of a each object is created
     """
     def __init__(self, *args, **kwargs):
         """
         To initialize data
         """
-         #setting attributes from kwargs
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key == "created_at" or key == "updated_at":
                         value = datetime.fromisoformat(value)
                     setattr(self, key, value)
-         else:
+        else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
 
     def save(self):
         """
-        updates the public instance attribute updated_at with the current datetime
+        Updates the public instance attribute updated_at
+        with the current datetime
         """
         self.updated_at = datetime.now()
 
