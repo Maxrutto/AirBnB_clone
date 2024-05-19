@@ -8,7 +8,7 @@ for the console
 
 import cmd
 from models.base_model import BaseModel
-from models import FileStorage
+from models.engine.file_storage import FileStorage
 import shlex
 
 
@@ -177,7 +177,7 @@ class HBNBCommand(cmd.Cmd):
             for key, value in all_objs.items():
                 obj_name = value.__class__.__name__
                 obj_id = value.id
-                if obj_name == args[0] and obj_id = args[1].strip('"'):
+                if obj_name == args[0] and obj_id == args[1].strip('"'):
                     if len(args) == 2:
                         print("** attribute name missing **")
                     elif len(args) == 3:
