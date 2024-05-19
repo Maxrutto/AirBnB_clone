@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This file contains a basemodel structure that defines attributes and methods for
 all other classes that inherit from it
@@ -6,6 +7,7 @@ all other classes that inherit from it
 
 from datetime import datetime
 import uuid
+from models import storage
 
 class BaseModel:
     """
@@ -30,12 +32,14 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
+            storage.new(self)
 
     def save(self):
         """
         updates the public instance attribute updated_at with the current datetime
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
