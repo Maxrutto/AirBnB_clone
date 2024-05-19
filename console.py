@@ -16,15 +16,15 @@ class HBNBCommand(cmd.Cmd):
         prompt (str): The prompt printed on the console
     """
 
-    prompt = "(hbnb )"
+    prompt = "(hbnb) "
 
-    def do_quit(self):
+    def do_quit(self, arg):
         """
         Quits to exit the command interpreter
         """
         return True
 
-    def do_EOF(self):
+    def do_EOF(self, arg):
         """
         EOF signal to exit the program
         """
