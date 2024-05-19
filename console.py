@@ -10,6 +10,7 @@ import cmd
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 import shlex
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -21,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    classes = ['BaseModel']
+    classes = ['BaseModel', 'User']
 
     cmnds = ['create', 'show', 'update', 'all', 'destroy', 'count']
 
@@ -72,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in HBNBCommand.classes:
             print("** class doesn't exist **")
         else:
-            dct = {'BaseModel': BaseModel}
+            dct = {'BaseModel': BaseModel, 'User': User}
             model = dct[arg]()
             print(model.id)
             model.save()
