@@ -97,12 +97,13 @@ class HBNBCommand(cmd.Cmd):
         else:
             storage = FileStorage()
             all_objs = storage.all()
+            instance_found = False
             for key, value in all_objs.items():
                 obj_name = value.__class__.__name__
                 obj_id = value.id
                 if obj_name == args[0] and obj_id == args[1].strip('"'):
                     print(value)
-                    return
+                return
             print("** no instance found **")
 
     def do_destroy(self, arg):
@@ -131,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
                     del value
                     del storage._FileStorage.__objects[key]
                     storage.save()
-                    return
+                return
             print("** no instance found **")
 
     def do_all(self, arg):
@@ -147,8 +148,8 @@ class HBNBCommand(cmd.Cmd):
             all_objs = storage.all()
             list_instances = []
             for key, value in all_objs.items():
-                obj_name = value.__class__.__name
-                if obj_name == arg[0]:
+                obj_name = value.__class__.__name__
+                if obj_name == arg:
                     list_instances += [value.__str__()]
             print(list_instances)
 
@@ -186,7 +187,7 @@ class HBNBCommand(cmd.Cmd):
                     else:
                         setattr(value, args[2], args[3])
                         storage.save()
-                    return
+            return
             print("** no instance found **")
 
 
